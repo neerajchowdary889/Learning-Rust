@@ -1,0 +1,10 @@
+cargo new maincodes
+after getting into maincodes --> cargo build --> to build the cargo project properly
+cargo run --> to compile and make executable life
+cargo check --> check for errors without compiling the code.
+
+Signed variable stores both positive and negative value. start with letter i.
+Unsigned variable stores only positive value. start with letter u.
+Constant variable name should in all caps.
+
+rustfmt --> format the code.
