@@ -11,12 +11,12 @@ fn main() {
         let var = var - 25;
         println!("Variable is {}", var);
 
-        /* For easy readability of large numbers, we can use a visual 
-        separator _ underscore to separate digits. That is 50,000 can be 
+        /* For easy readability of large numbers, we can use a visual
+        separator _ underscore to separate digits. That is 50,000 can be
         written as 50_000 . */
         let secondvar = 11_000.555_001;
         println!("Variable is {}", secondvar);
-        
+
         let secondvar = 55_001;
         println!("Variable is {}", secondvar);
     }
@@ -25,8 +25,8 @@ fn main() {
     println!("Variable is {}", var);
 
     let var = "String";
-    println!("Variable is {}", var);
+    println!("Variable is {}, length is {}", var, var.len());
 
     let var = "🤷‍♀️";
-    println!("EMoji is {}", var);
+    println!("EMoji is {}, length is {}", var, var.len());
 }
