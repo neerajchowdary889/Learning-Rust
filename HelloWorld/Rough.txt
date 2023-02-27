@@ -7,4 +7,6 @@ Signed variable stores both positive and negative value. start with letter i.
 Unsigned variable stores only positive value. start with letter u.
 Constant variable name should in all caps.
 
+In Rust code, the -> symbol is used to indicate the return type of a function.
+
 rustfmt --> format the code.
