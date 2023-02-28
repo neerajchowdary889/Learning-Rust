@@ -61,5 +61,8 @@ fn forloopvect(){
     for i in branches.iter(){
         println!("Branch is {}",i);
     }
+    for (index, i) in branches.iter().enumerate(){
+        println!("Index of Branch {} is {}",i,index);
+    }
     println!("{:?}",branches);
 }
