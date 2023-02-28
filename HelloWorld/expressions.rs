@@ -10,9 +10,24 @@ fn main(){
     println!("{}",number);
     let addnumbers = add_numbers(10,555);
     println!("From the function add_numbrs is {}", addnumbers);
+    let check = totalcheck(10,555);
+    println!("From the function totalcheck is {}", check);
 }
 
 fn add_numbers(a: i32, b: i32) -> i32{
     a + b
     //return expression without semicolon.
+    //we can also use return keyword also.
+}
+
+fn totalcheck(a: i32, b: i32) -> i32 {
+    let result = a + b;
+    let mut integer;
+    if result >= 600{
+        integer = result;
+        return result;
+    }
+    else{
+        return 0;
+    }
 }
