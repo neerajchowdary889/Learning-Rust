@@ -1,32 +1,86 @@
-fn main() {
-    // This is Exterior scope.
-    let var = 65;
-    println!("Variable is {}", var);
+#![allow(non_snake_case)]
+#![allow(unused_variables)]
+#![allow(dead_code)]
+use std::io;
+use std::collections::HashMap;
 
-    {
-        //Shadowing
-        // Information inside the brackets is called Interior scope.
-        /* it depend on previous variables but change done in this brackets doesn't reflect
-        in original */
-        let var = var - 25;
-        println!("Variable is {}", var);
+#[derive(Debug)]
+struct Voting {
+    Yes: i64,
+    No: i64,
+}
 
-        /* For easy readability of large numbers, we can use a visual
-        separator _ underscore to separate digits. That is 50,000 can be
-        written as 50_000 . */
-        let secondvar = 11_000.555_001;
-        println!("Variable is {}", secondvar);
+fn main(){
+    let vec = inputTovector();
+    println!("The vector is: {:?}", vec);
 
-        let secondvar = 55_001;
-        println!("Variable is {}", secondvar);
+    println!("\n<__________Voting Starts___________>\n");
+
+    let map = voting(&vec);
+
+    println!("\n<__________Voting Ends___________>\n");
+
+    for (key, value) in &map{
+        println!("{:?}: {:?}", key, value);
     }
+}
 
-    let var = var - 5;
-    println!("Variable is {}", var);
+fn inputTovector() -> Vec<String> {
+    let mut vec = Vec::new();
 
-    let var = "String";
-    println!("Variable is {}, length is {}", var, var.len());
+    println!("How many items you need to Input: ");
+    let mut NumbOfItems = String::new();
+    io::stdin().read_line(&mut NumbOfItems).expect("Failed to read line");
+    let num: i32 = NumbOfItems.trim().parse().expect("Please type a number");
 
-    let var = "🤷‍♀️";
-    println!("EMoji is {}, length is {}", var, var.len());
+    let mut i: i32 = 0;
+    while i < num {
+        println!("Enter the item: ");
+        let mut input = String::new();
+        io::stdin().read_line(&mut input).expect("Failed to read line");
+        vec.push(input.trim().to_string());
+        i += 1;
+    }
+    vec
+}
+
+fn voting(vec: &Vec<String>) -> HashMap<&String, Voting>{
+
+    let mut map = HashMap::new();
+    for i in vec.iter(){
+        let mut yes: i64 = 0;
+        let mut no: i64 = 0;
+
+        println!(":: For item {}\nEnter 1 for yes\n0 for no\nanything else to stop voting: ",i);
+        loop{
+            let mut input = String::new();
+            println!(">>Vote: ");
+            io::stdin().read_line(&mut input).expect("Failed to read line");
+
+            if let Ok(choice) = input.trim().parse::<i64>() {
+                if choice == 1 {
+                    yes += 1;
+                } else if choice == 0 {
+                    no += 1;
+                } else {
+                    break;
+                }
+            } else {
+                break;
+            }
+        }
+        map.insert(i, Voting{Yes:yes, No:no});
+
+        if yes > no {
+            println!("----->> {} is selected",i);
+        } 
+        else if no == yes {
+            println!("----->> {} has equal voting",i);
+        }
+        else{
+            println!("----->> {} is not selected",i);
+        }
+        println!("\n<--------------------->\n");
+    }
+    map
 }
