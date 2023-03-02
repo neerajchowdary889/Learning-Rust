@@ -8,6 +8,7 @@ use std::collections::HashMap;
 struct Voting {
     Yes: i64,
     No: i64,
+    Selected: String,
 }
 
 fn main(){
@@ -18,7 +19,7 @@ fn main(){
 
     let map = voting(&vec);
 
-    println!("\n<__________Voting Ends___________>\n");
+    println!("<__________Voting Ends___________>\n");
 
     for (key, value) in &map{
         println!("{:?}: {:?}", key, value);
@@ -69,18 +70,25 @@ fn voting(vec: &Vec<String>) -> HashMap<&String, Voting>{
                 break;
             }
         }
-        map.insert(i, Voting{Yes:yes, No:no});
 
-        if yes > no {
+        let Percentage: f64 = percentage(yes, no);
+
+        println!("\n----->> Yes: {}%  No: {}%",Percentage, 100.0-Percentage);
+        if Percentage > 70.0 {
+            map.insert(i, Voting{Yes: yes, No: no, Selected: "Selected".to_string()});
             println!("----->> {} is selected",i);
         } 
-        else if no == yes {
-            println!("----->> {} has equal voting",i);
-        }
         else{
+            map.insert(i, Voting{Yes: yes, No: no, Selected: "Not Selected".to_string()});
             println!("----->> {} is not selected",i);
         }
         println!("\n<--------------------->\n");
     }
     map
+}
+
+fn percentage(yes: i64, no: i64) -> f64{
+    let total = yes + no;
+    let percentage = (yes as f64 / total as f64) * 100.0;
+    percentage
 }
