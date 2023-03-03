@@ -64,10 +64,14 @@ fn voting(vec: &Vec<String>) -> HashMap<String, Voting>{
         let mut yes: i64 = 0;
         let mut no: i64 = 0;
 
-        println!("Input the Item you want to vote for: ");
+        println!("Input the Item you want to vote or\nEnter ./!1 to stop voting\n>>vote: ");
         let mut input = String::new();
         io::stdin().read_line(&mut input).expect("Failed to read line");
-    
+
+        if input.trim() == "./!1"{
+            break;
+        }
+
         let int = index(vec.clone(), input.trim().to_string());
     if int == -1{
         println!("{} is not in the list", input.trim());
