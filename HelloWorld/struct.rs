@@ -17,5 +17,5 @@ fn main(){
         employeer : String::from("Sidhappa"),
         salary : 150000
     }; 
-    println!("Company is {}\nRecruter is {}\nSalary is {}",Job2.company, Job2.employeer, Job2.salary);
+    println!("Company is {}\nRecruter is {}\nSalary is {}",Job3.company, Job2.employeer, Job2.salary);
 }
