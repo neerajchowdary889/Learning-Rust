@@ -24,11 +24,11 @@ fn main(){
     }
     table.printstd();
 
-    println!("\n<__________Voting Starts___________>");
+    println!("\n<-----------Voting Starts----------->");
 
     let map = voting(&vec);
 
-    println!("<__________Voting Ends___________>\n");
+    println!("<-----------Voting Ends----------->\n");
 
     for (key, value) in &map{
         println!("{:?}: {:?}", key, value);
@@ -64,7 +64,7 @@ fn voting(vec: &Vec<String>) -> HashMap<String, Voting>{
         let mut yes: i64 = 0;
         let mut no: i64 = 0;
 
-        println!("Input the Item you want to vote or\nEnter ./!1 to stop voting\n>>vote: ");
+        println!("Input the Item you want to vote or\nEnter ./!1 to stop voting\n>>Item: ");
         let mut input = String::new();
         io::stdin().read_line(&mut input).expect("Failed to read line");
 
