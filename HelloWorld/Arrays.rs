@@ -32,4 +32,5 @@ fn vectors(){
     println!("\n Removing 6 from list");
     vector.remove(5);
     println!("{:?}",vector);
+    
 }
